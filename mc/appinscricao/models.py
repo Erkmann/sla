@@ -1,11 +1,12 @@
 from django.db import models
 import datetime
+from django.utils import timezone as timezone
 
 from appculto.models import Culto
 
 
 class Inscricao(models.Model):
-    dhup = models.fields.DateTimeField(default=datetime.datetime.now())
+    dhup = models.fields.DateTimeField(default=timezone.now)
     qtd_pessoas = models.fields.IntegerField(default=1)
     nome = models.fields.CharField(max_length=45)
     telefone = models.fields.CharField(max_length=45)

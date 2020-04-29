@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'applocal',
     'appculto',
     'appinscricao',
+    'appuser',
 ]
 
 MIDDLEWARE = [
