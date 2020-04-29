@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+</head>
+<body>
+
+Quer mesmo deletar local: {{ id }}
+
+<form method="post" action="">
+    {% csrf_token %}
+    <input style="background-color: red" type="submit" value="Sim">
+</form>
+<a href="{% url 'apphome:home' %}"><button style="background-color: green">Nao</button></a>
+
+</body>
+</html>
