@@ -7,7 +7,7 @@ class Culto(models.Model):
     horario = models.fields.CharField(max_length=45)
     limite = models.fields.IntegerField()
     sysActive = models.fields.BooleanField(default=True)
-    local = models.ForeignKey(Local, on_delete=models.CASCADE)
+    local = models.ForeignKey(Local, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f'{self.id} - {self.data}@{self.horario} | {self.local}'
