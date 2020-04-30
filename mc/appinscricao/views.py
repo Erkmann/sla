@@ -33,12 +33,10 @@ class InscricaoAddView(View):
         return redirect('/')
 
     def post(self, request, *args, **kwargs):
-        form = AddInscricaoForm(request.POST.clean())
+        form = AddInscricaoForm(request.POST)
         culto = Culto.objects.filter(id=kwargs['culto']).first()
-        for a in form:
-            print(a)
         if culto:
-            if culto.vagas - form.cleaned_data['qtd_pessoas'] >= 0:
+            if culto.vagas - int(form['qtd_pessoas'].value()) >= 0:
                 if form.is_valid():
                     qtd_pessoas = form.cleaned_data['qtd_pessoas']
                     santa_ceia = form.cleaned_data['santa_ceia']
@@ -59,5 +57,23 @@ class InscricaoAddView(View):
                     inscricao.save()
                     return redirect('/')
                 return redirect('/')
+            return redirect('/')
+        return redirect('/')
+
+
+class InscricaoDeleteView(View):
+    def get(self, request, *args, **kwargs):
+        inscricao = Inscricao.objects.filter(token=kwargs['token']).first()
+        if inscricao:
+            return render(request, 'appinscricao/delete_inscricao.html', {'inscricao': inscricao})
+        else:
+            return redirect('/')
+
+    def post(self, request, *args, **kwargs):
+        inscricao = Inscricao.objects.filter(token=kwargs['token']).first()
+        if inscricao:
+            inscricao.culto.vagas += inscricao.qtd_pessoas
+            inscricao.culto.save()
+            inscricao.delete()
             return redirect('/')
         return redirect('/')
