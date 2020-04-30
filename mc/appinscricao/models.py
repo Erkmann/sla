@@ -8,6 +8,7 @@ from appculto.models import Culto
 class Inscricao(models.Model):
     dhup = models.fields.DateTimeField(default=timezone.now)
     qtd_pessoas = models.fields.IntegerField(default=1)
+    santa_ceia = models.fields.IntegerField(default=1)
     nome = models.fields.CharField(max_length=45)
     telefone = models.fields.CharField(max_length=45)
     token = models.IntegerField()

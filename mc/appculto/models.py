@@ -5,7 +5,8 @@ from applocal.models import Local
 class Culto(models.Model):
     data = models.fields.DateField()
     horario = models.fields.CharField(max_length=45)
-    limite = models.fields.IntegerField()
+    limite = models.fields.IntegerField(default=40)
+    vagas = models.fields.IntegerField(default=40)
     sysActive = models.fields.BooleanField(default=True)
     local = models.ForeignKey(Local, null=True, on_delete=models.SET_NULL)
 
