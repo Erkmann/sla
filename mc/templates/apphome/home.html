@@ -1,12 +1,55 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Home</title>
-</head>
-<body>
-
-Home page
-
-</body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/home/main.css' %}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="warning">
+        <p>Even in this pandemic God is with us.</p>
+      </div>
+      <header>
+        <div class="center">
+          <nav>
+            <img id="icon" src="{% static 'images/ielb.png' %}" />
+            <ul>
+              <li>
+                <a class="button" href="#">Cancelar Inscrição</a>
+              </li>
+              <li>
+                <a class="button" href="#">Sing in</a>
+              </li>
+              <li>
+                <a href="#">Cultos</a>
+              </li>
+              <li>
+                <a href="#">Home</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <div class="content">
+        <div class="text">
+          <h1>Bem Vindo</h1>
+          <div class="subheading">
+            <p>
+              Ferramenta desenvolvida com o objetivo de controlar o tráfego de
+              pessoas nas igrejas.
+            </p>
+          </div>
+        </div>
+        <div id="img"></div>
+      </div>
+      <footer></footer>
+    </div>
+  </body>
 </html>
