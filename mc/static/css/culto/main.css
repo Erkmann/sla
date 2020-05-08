@@ -1,0 +1,49 @@
+/* Content */
+
+.content {
+  width: 1200px;
+  min-height: 500px;
+  margin: 0px auto;
+  padding-top: 70px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr;
+}
+
+.card {
+  max-height: 200px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.data {
+  background-color: #6afdef;
+}
+
+.data,
+.local,
+.vagas {
+  margin-bottom: 10px;
+}
+
+.button {
+  background-color: #181818;
+  border: 1px solid #181818;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 2px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.button:hover {
+  cursor: pointer;
+  color: #181818;
+  background-color: #fff;
+
+  transition: all 0.2s linear;
+}

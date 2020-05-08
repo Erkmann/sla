@@ -1,0 +1,59 @@
+<!-- Static -->
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Title -->
+    {% block title %} {% endblock %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Style -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/base/base.css' %}"
+    />
+    {% block style %} {% endblock %}
+  </head>
+  <body>
+    <div class="container">
+      <!-- Warning -->
+      <div class="warning">
+        <p>Even in this pandemic God is with us.</p>
+      </div>
+
+      <!-- Header -->
+      <header>
+        <div class="center">
+          <nav>
+            <img id="icon" src="{% static 'images/ielb.png' %}" />
+            <ul>
+              <li>
+                <a class="menu-button" href="#">Cancelar Inscrição</a>
+              </li>
+              <li>
+                <a class="menu-button" href="{% url 'appuser:login' %}"
+                  >Sing in</a
+                >
+              </li>
+              <li>
+                <a href="{% url 'appculto:culto' %}">Cultos</a>
+              </li>
+              <li>
+                <a href="{% url 'apphome:home' %}">Home</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Content -->
+      {% block content %} {% endblock %}
+
+      <!-- Footer -->
+      <footer></footer>
+    </div>
+  </body>
+</html>

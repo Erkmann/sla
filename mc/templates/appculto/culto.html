@@ -1,12 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Culto</title>
-</head>
-<body>
+<!-- Extends -->
+{% extends '../base/base_layout.html' %}
 
-pagina do culto
+<!-- Static -->
+{% load static %}
 
-</body>
-</html>
+<!-- Title -->
+{% block title %}
+<title>Culto</title>
+{% endblock %}
+
+<!-- Style -->
+{% block style %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/culto/main.css' %}"
+/>
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+<div class="content">
+  {% for item in cultos %}
+  <div class="card">
+    <div class="data">
+      <h2>Culto as {{ item.data }}</h2>
+    </div>
+    <div class="local">
+      <p><b>Local:</b> {{ item.local }}</p>
+    </div>
+    <div class="vagas">
+      <span><b>Vagas Disponíveis:</b> {{ item.vagas }}</span>
+    </div>
+    <div class="button">
+      Inscrever-se
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

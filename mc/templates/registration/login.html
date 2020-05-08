@@ -1,52 +1,56 @@
+<!-- Extends -->
+{% extends '../base/base_layout.html' %}
+
+<!-- Static -->
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/login/main.css' %}"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <div class="content">
-        <div id="login">
-          <form method="POST" action="{% url 'appuser:login' %}">
-            {% csrf_token %}
 
-            <!-- <h1>Login</h1> -->
-            <img src="https://cdn.wallpaperhub.app/cloudcache/2/0/2/8/5/1/20285160579cf0b7be3203456f8e956b6328e258.jpg">  
-            <hr>
-            <p>
-                <label>{{ form.username.label_tag }}</label>
-                <div class="input-username">{{ form.username }}</div>
-            </p>
-            <p>
-                <label>{{ form.password.label_tag }}</label>
-                <div class="input-password">{{ form.password }}</div>
-            </p>
-            <p>
-                <input type="submit" value="Login" />
-                <input type="hidden" name="next" value="{{ next }}" />
-            </p>   
+<!-- Title -->
+{% block title %}
+<title>Login</title>
+{% endblock %}
 
-            {% if form.errors %}
-            <p class="error">Your username and password didn't match. Please try again.</p>
-            {% endif %} {% if next %} {% if user.is_authenticated %}
-            <p class="error">
-              Your account doesn't have access to this page. To proceed, please
-              login with an account that has access.
-            </p>
-            {% else %}
-            <p class="alert">Please login to see this page.</p>
-            {% endif %} {% endif %}
-          </form>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+<!-- Style -->
+{% block style %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/login/main.css' %}"
+/>
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+<div class="content">
+  <div id="login">
+    <form method="POST" action="{% url 'appuser:login' %}">
+      {% csrf_token %}
+
+      <h1>Login</h1>
+
+      <p>
+          <label>{{ form.username.label_tag }}</label>
+          <div class="input-username">{{ form.username }}</div>
+      </p>
+      <p>
+          <label>{{ form.password.label_tag }}</label>
+          <div class="input-password">{{ form.password }}</div>
+      </p>
+      <p>
+          <input type="submit" value="Login" />
+          <input type="hidden" name="next" value="{{ next }}" />
+      </p>   
+
+      {% if form.errors %}
+      <p class="error">Your username and password didn't match. Please try again.</p>
+      {% endif %} {% if next %} {% if user.is_authenticated %}
+      <p class="error">
+        Your account doesn't have access to this page. To proceed, please
+        login with an account that has access.
+      </p>
+      {% else %}
+      <p class="alert">Please login to see this page.</p>
+      {% endif %} {% endif %}
+    </form>
+  </div>
+</div>
+{% endblock %}
