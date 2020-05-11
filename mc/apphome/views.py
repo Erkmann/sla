@@ -1,11 +1,8 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.shortcuts import render, redirect
+from django.views.generic.base import View
 
 
-class HomeHomeView(TemplateView):
-    template_name = "apphome/home.html"
+class HomeHomeView(View):
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # context['latest_articles'] = Article.objects.all()[:5]
-        return context
+    def get(self, request, *args, **kwargs):
+        return redirect('/culto')

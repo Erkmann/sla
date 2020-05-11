@@ -1,18 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Delete</title>
-</head>
-<body>
+<!-- Extends -->
+{% extends '../base/base_layout.html' %}
 
-Quer mesmo cancelar sua inscricao: {{ inscricao.token }}
+<!-- Static -->
+{% load static %}
 
-<form method="post" action="">
-    {% csrf_token %}
-    <input style="background-color: red" type="submit" value="Sim">
-</form>
-<a href="{% url 'apphome:home' %}"><button style="background-color: green">Nao</button></a>
+<!-- Title -->
+{% block title %}
+    <title>Culto</title>
+{% endblock %}
 
-</body>
-</html>
+<!-- Style -->
+{% block style %}
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/culto/main.css' %}"
+    />
+{% endblock %}
+{% block content %}
+    <div class="content">
+        <div id="login">
+            <form method="POST" action="">
+                {% csrf_token %}
+                Quer mesmo cancelar sua inscricao: {{ inscricao.token }}
+                <a href="{% url 'apphome:home' %}">
+                    <button style="background-color: green">Nao</button>
+                </a>
+                <input style="background-color: red" type="submit" value="Sim">
+            </form>
+        </div>
+    </div>
+{% endblock %}

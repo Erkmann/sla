@@ -1,38 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Inscricao</title>
-</head>
-<body>
+<!-- Extends -->
+{% extends '../base/base_layout.html' %}
 
-{% if form.errors %}
-<p>Required Fields not inputed!</p>
-{% endif %}
+<!-- Static -->
+{% load static %}
 
-<form method="post" action="">
-{% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.qtd_pessoas.label }}</td>
-    <td>{{ form.qtd_pessoas }}</td>
-</tr>
-<tr>
-    <td>{{ form.santa_ceia.label }}</td>
-    <td>{{ form.santa_ceia }}</td>
-</tr>
-    <tr>
-    <td>{{ form.nome.label }}</td>
-    <td>{{ form.nome }}</td>
-</tr>
-    <tr>
-    <td>{{ form.telefone.label }}</td>
-    <td>{{ form.telefone }}</td>
-</tr>
-</table>
+<!-- Title -->
+{% block title %}
+    <title>Inscricao</title>
+{% endblock %}
 
-<input type="submit" value="Adicionar">
-</form>
+<!-- Style -->
+{% block style %}
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/login/main.css' %}"
+    />
+{% endblock %}
 
-</body>
-</html>
+<!-- Content -->
+{% block content %}
+    <div class="content">
+        <div id="login">
+
+            <form method="POST" action="">
+                {% if form.errors %}
+                    <p>Required Fields not inputed!</p>
+                {% endif %}
+                {% csrf_token %}
+
+                <h1>Inscrever-se</h1>
+
+                <p>
+                    <label>{{ form.qtd_pessoas.label }}</label>
+                <div class="input-username">{{ form.qtd_pessoas }}</div>
+                </p>
+
+                <p>
+                    <label>{{ form.santa_ceia.label }}</label>
+                <div class="input-username">{{ form.santa_ceia }}</div>
+                </p>
+                <p>
+                    <label>{{ form.nome.label }}</label>
+                <div class="input-username">{{ form.nome }}</div>
+                </p>
+                <p>
+                    <label>{{ form.telefone.label }}</label>
+                <div class="input-username">{{ form.telefone }}</div>
+                </p>
+
+                <p>
+                    <input type="submit" value="Inscrever-se"/>
+                </p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

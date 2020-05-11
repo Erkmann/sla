@@ -31,7 +31,7 @@
             <img id="icon" src="{% static 'images/ielb.png' %}" />
             <ul>
               <li>
-                <a class="menu-button" href="#">Cancelar Inscrição</a>
+                <a class="menu-button" href="{% url 'appinscricao:delete_inscricao_step' %}">Cancelar Inscrição</a>
               </li>
               <li>
                 <a class="menu-button" href="{% url 'appuser:login' %}"

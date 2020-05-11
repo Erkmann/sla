@@ -33,7 +33,8 @@
       <span><b>Vagas Disponíveis:</b> {{ item.vagas }}</span>
     </div>
     <div class="button">
-      Inscrever-se
+        <a class="btn-ins" style="text-decoration: none; color: white;"
+           href="{% url 'appinscricao:add_inscricao' item.id %}">Inscrever-se</a>
     </div>
   </div>
   {% endfor %}

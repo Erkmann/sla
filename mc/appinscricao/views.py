@@ -55,7 +55,7 @@ class InscricaoAddView(View):
                     culto.vagas -= qtd_pessoas
                     culto.save()
                     inscricao.save()
-                    return redirect('/')
+                    return render(request, 'appinscricao/token.html', {'token': inscricao.token})
                 return redirect('/')
             return redirect('/')
         return redirect('/')
@@ -77,3 +77,14 @@ class InscricaoDeleteView(View):
             inscricao.delete()
             return redirect('/')
         return redirect('/')
+
+
+class InscricaoDeleteInsertView(View):
+    template_name = 'appinscricao/delete_insert_inscricao.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name)
+
+    def post(self, request, *args, **kwargs):
+        token = request.POST.get('token', '')
+        return redirect('appinscricao:delete_inscricao', token)
