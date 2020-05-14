@@ -6,37 +6,49 @@
 
 <!-- Title -->
 {% block title %}
-<title>Culto</title>
+    <title>Cultos</title>
 {% endblock %}
 
 <!-- Style -->
 {% block style %}
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'css/culto/main.css' %}"
-/>
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/culto/main.css' %}"
+    />
 {% endblock %}
 
 <!-- Content -->
 {% block content %}
-<div class="content">
-  {% for item in cultos %}
-  <div class="card">
-    <div class="data">
-      <h2>Culto as {{ item.data }}</h2>
+    <div class="ui container">
+    {% if cultos %}
+        {% for item in cultos %}
+            <div class="card">
+                <div class="ui teal inverted segment">
+                    <h2>Culto dia {{ item.data.day }}/{{ item.data.month }} as {{ item.horario }}</h2>
+                </div>
+                <div class="local">
+                    <p><b>Local:</b> {{ item.local.short_description }} ({{ item.local.rua }}, {{ item.local.numero }})
+                    </p>
+                </div>
+                <div class="vagas">
+                    <span><b>Vagas Disponíveis:</b> {{ item.vagas }}</span>
+                </div>
+                <div class="">
+                    <a class="ui blue button"
+                       href="{% url 'appinscricao:add_inscricao' item.id %}">Inscrever-se</a>
+                    {% if user.username %}
+                        <a class="ui yellow tiny button"
+                           href="{% url 'appculto:inscricoes_culto' item.id %}">Ver Inscricoes</a>
+                        <a class="ui green mini icon button"
+                           href="{% url 'appculto:update_culto' item.id %}"><i class="edit icon"></i></a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+
     </div>
-    <div class="local">
-      <p><b>Local:</b> {{ item.local }}</p>
-    </div>
-    <div class="vagas">
-      <span><b>Vagas Disponíveis:</b> {{ item.vagas }}</span>
-    </div>
-    <div class="button">
-        <a class="btn-ins" style="text-decoration: none; color: white;"
-           href="{% url 'appinscricao:add_inscricao' item.id %}">Inscrever-se</a>
-    </div>
-  </div>
-  {% endfor %}
-</div>
+    {% else %}
+        <h1>Sem cultos cadastrados!</h1>
+    {% endif %}
 {% endblock %}

@@ -18,15 +18,15 @@
     />
 {% endblock %}
 {% block content %}
-    <div class="content">
+    <div class="ui container">
         <div id="login">
-            <form method="POST" action="">
+            <form class="ui form" method="POST" action="">
                 {% csrf_token %}
-                Quer mesmo cancelar sua inscricao: {{ inscricao.token }}
+                <h1>Quer mesmo cancelar sua inscricao: <text style="color: #4ab3c6">{{ inscricao.token }}</text>?</h1>
                 <a href="{% url 'apphome:home' %}">
-                    <button style="background-color: green">Nao</button>
+                    <button class="ui green button">Nao</button>
                 </a>
-                <input style="background-color: red" type="submit" value="Sim">
+                <input class="ui red inverted button" type="submit" value="Sim">
             </form>
         </div>
     </div>

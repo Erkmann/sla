@@ -1,0 +1,46 @@
+<!-- Extends -->
+{% extends '../base/base_layout.html' %}
+
+<!-- Static -->
+{% load static %}
+
+<!-- Title -->
+{% block title %}
+    <title>Inscricoes do Culto</title>
+{% endblock %}
+
+<!-- Style -->
+{% block style %}
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/culto/main.css' %}"
+    />
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+    <div class="ui container">
+        {% if culto %}
+            <h2>Culto: {{ culto.data.day }}/{{ culto.data.month }} - {{ culto.horario }} - {{ culto.local.short_description }}</h2>
+        {% endif %}
+        {% if inscricoes %}
+            {% if total %}
+                <p style="text-align: center"><h3>Total de pessoas: {{ total }}</h3></p>
+            {% endif %}
+            {% if santa_ceia %}
+                <p style="text-align: center"> <h3>Total de pessoas para Santa Ceia: {{ santa_ceia }}</h3></p>
+            {% endif %}
+            {% for i in inscricoes %}
+                <div class="ui four column segment grid">
+                    <div style="background-color: #e0e1e2" class="column">Nome: {{ i.nome }}</div>
+                    <div style="background-color: #e0e1e2" class="column">Pessoas: {{ i.qtd_pessoas }}</div>
+                    <div style="background-color: #e0e1e2" class="column">Pessoas Santa Ceia: {{ i.santa_ceia }}</div>
+                    <div style="background-color: #e0e1e2" class="column">Telefone: {{ i.telefone }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            Nenhuma Inscricao!
+        {% endif %}
+    </div>
+{% endblock %}

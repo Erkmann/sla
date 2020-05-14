@@ -10,4 +10,4 @@ class Local(models.Model):
     sysActive = models.fields.BooleanField(default=True)
 
     def __str__(self):
-        return f'{self.id} - {self.rua}, {self.numero}'
+        return f'{self.short_description}'

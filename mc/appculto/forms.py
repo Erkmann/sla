@@ -11,4 +11,4 @@ class AddCultoForm(ModelForm):
 class UpdateCultoForm(ModelForm):
     class Meta:
         model = Culto
-        fields = ['data', 'horario', 'limite', 'local']
+        fields = ['data', 'horario', 'limite', 'vagas', 'local']

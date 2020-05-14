@@ -1,0 +1,27 @@
+<!-- Extends -->
+{% extends '../base/base_layout.html' %}
+
+<!-- Static -->
+{% load static %}
+
+<!-- Title -->
+{% block title %}
+    <title>Erro</title>
+{% endblock %}
+
+<!-- Style -->
+{% block style %}
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/login/main.css' %}"
+    />
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+<div class="ui container">
+    <h1 class="ui red">{{ erro }}</h1>
+    <a href="{% url 'apphome:home' %}"><button class="ui button">Voltar a pagina inical</button></a>
+</div>
+{% endblock %}

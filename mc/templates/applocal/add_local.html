@@ -1,42 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Local</title>
-</head>
-<body>
+<!-- Extends -->
+{% extends '../base/base_layout.html' %}
 
-{% if form.errors %}
-<p>Required Fields not inputed!</p>
-{% endif %}
+<!-- Static -->
+{% load static %}
 
-<form method="post" action="{% url 'applocal:add_local' %}">
-{% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.rua.label }}</td>
-    <td>{{ form.rua }}</td>
-</tr>
-<tr>
-    <td>{{ form.bairro.label }}</td>
-    <td>{{ form.bairro }}</td>
-</tr>
-    <tr>
-    <td>{{ form.complemento.label }}</td>
-    <td>{{ form.complemento }}</td>
-</tr>
-    <tr>
-    <td>{{ form.numero.label }}</td>
-    <td>{{ form.numero }}</td>
-</tr>
-    <tr>
-    <td>{{ form.short_description.label }}</td>
-    <td>{{ form.short_description }}</td>
-</tr>
-</table>
+<!-- Title -->
+{% block title %}
+    <title>Adicionar Culto</title>
+{% endblock %}
 
-<input type="submit" value="Adicionar">
-</form>
+<!-- Style -->
+{% block style %}
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/culto/main.css' %}"
+    />
+{% endblock %}
 
-</body>
-</html>
+<!-- Content -->
+{% block content %}
+    <div class="ui container">
+
+        {% if form.errors %}
+            <p>Required Fields not inputed!</p>
+        {% endif %}
+
+        <form method="post" action="{% url 'applocal:add_local' %}">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>{{ form.rua.label }}</td>
+                    <td>{{ form.rua }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.bairro.label }}</td>
+                    <td>{{ form.bairro }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.complemento.label }}</td>
+                    <td>{{ form.complemento }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.numero.label }}</td>
+                    <td>{{ form.numero }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.short_description.label }}</td>
+                    <td>{{ form.short_description }}</td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Adicionar">
+        </form>
+
+    </div>
+
+{% endblock %}

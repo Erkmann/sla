@@ -29,8 +29,9 @@ class InscricaoAddView(View):
                 form = AddInscricaoForm
                 return render(request, self.template_name, {'form': form, 'culto': culto.id})
             else:
-                return redirect('/')
-        return redirect('/')
+                return render(request, 'apperro/erro.html', {'erro': 'Limite de VAGAS atingido, '
+                                                                     'entre em contato com a diretoria ou o pastor!'})
+        return render(request, 'apperro/erro.html', {'erro': 'Culto nao encontrado!'})
 
     def post(self, request, *args, **kwargs):
         form = AddInscricaoForm(request.POST)
@@ -56,9 +57,10 @@ class InscricaoAddView(View):
                     culto.save()
                     inscricao.save()
                     return render(request, 'appinscricao/token.html', {'token': inscricao.token})
-                return redirect('/')
-            return redirect('/')
-        return redirect('/')
+                return render(request, 'apperro/erro.html', {'erro': 'Formulario incorreto'})
+            return render(request, 'apperro/erro.html', {'erro': 'Limite de VAGAS atingido, '
+                                                                 'entre em contato com a diretoria ou o pastor!'})
+        return render(request, 'apperro/erro.html', {'erro': 'Culto nao encontrado!'})
 
 
 class InscricaoDeleteView(View):
@@ -67,7 +69,7 @@ class InscricaoDeleteView(View):
         if inscricao:
             return render(request, 'appinscricao/delete_inscricao.html', {'inscricao': inscricao})
         else:
-            return redirect('/')
+            return render(request, 'apperro/erro.html', {'erro': 'Token nao encontrada!'})
 
     def post(self, request, *args, **kwargs):
         inscricao = Inscricao.objects.filter(token=kwargs['token']).first()
@@ -76,7 +78,7 @@ class InscricaoDeleteView(View):
             inscricao.culto.save()
             inscricao.delete()
             return redirect('/')
-        return redirect('/')
+        return render(request, 'apperro/erro.html', {'erro': 'Token nao encontrada!'})
 
 
 class InscricaoDeleteInsertView(View):

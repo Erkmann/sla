@@ -20,39 +20,32 @@
 
 <!-- Content -->
 {% block content %}
-    <div class="content">
-        <div id="login">
+    <div class="ui container">
+        <form method="POST" action="" class="ui form">
+            {% if form.errors %}
+                <p>Required Fields not inputed!</p>
+            {% endif %}
+            {% csrf_token %}
 
-            <form method="POST" action="">
-                {% if form.errors %}
-                    <p>Required Fields not inputed!</p>
-                {% endif %}
-                {% csrf_token %}
+            <h1>Inscrever-se</h1>
+            <div class="field">
+                <label>{{ form.qtd_pessoas.label }}</label>
+                {{ form.qtd_pessoas }}
+            </div>
+            <div class="field">
+                <label>{{ form.santa_ceia.label }}</label>
+                {{ form.santa_ceia }}
+            </div>
+            <div class="field">
+                <label>{{ form.nome.label }}</label>
+                {{ form.nome }}
+            </div>
+            <div class="field">
+                <label>{{ form.telefone.label }}</label>
+                {{ form.telefone }}
+            </div>
+            <button class="ui teal button" type="submit">Inscrever-se</button>
 
-                <h1>Inscrever-se</h1>
-
-                <p>
-                    <label>{{ form.qtd_pessoas.label }}</label>
-                <div class="input-username">{{ form.qtd_pessoas }}</div>
-                </p>
-
-                <p>
-                    <label>{{ form.santa_ceia.label }}</label>
-                <div class="input-username">{{ form.santa_ceia }}</div>
-                </p>
-                <p>
-                    <label>{{ form.nome.label }}</label>
-                <div class="input-username">{{ form.nome }}</div>
-                </p>
-                <p>
-                    <label>{{ form.telefone.label }}</label>
-                <div class="input-username">{{ form.telefone }}</div>
-                </p>
-
-                <p>
-                    <input type="submit" value="Inscrever-se"/>
-                </p>
-            </form>
-        </div>
+        </form>
     </div>
 {% endblock %}

@@ -1,16 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!-- Extends -->
+{% extends '../base/base_layout.html' %}
 
-<form method="post" action="">
-    {% csrf_token %}
-    <label for="">Qual o token?</label><input type="text" name="token" id="">
-    <input type="submit" value="Cancelar Inscricao">
-</form>
+<!-- Static -->
+{% load static %}
 
-</body>
-</html>
+<!-- Title -->
+{% block title %}
+    <title>Cultos</title>
+{% endblock %}
+
+<!-- Style -->
+{% block style %}
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/culto/main.css' %}"
+    />
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+    <div class="ui container">
+    <form method="post" class="ui form">
+        {% csrf_token %}
+        <div class="field">
+            <label>Qual o token?</label>
+            <input required type="number" name="token" placeholder="Ex: 188164">
+        </div>
+
+        <button class="ui red inverted button" type="submit">Cancelar Inscricao</button>
+    </form>
+    </div>
+
+{% endblock %}

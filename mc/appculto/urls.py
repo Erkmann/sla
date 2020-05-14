@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CultoHomeView, CultoAddView, CultoUpdateView, CultoDeleteView
+from .views import CultoHomeView, CultoAddView, CultoUpdateView, CultoDeleteView, CultoInscricoesView
 
 app_name = 'appculto'
 urlpatterns = [
@@ -7,4 +7,5 @@ urlpatterns = [
     path('add/', CultoAddView.as_view(), name='add_culto'),
     path('update/<int:pk>/', CultoUpdateView.as_view(), name='update_culto'),
     path('delete/<int:pk>/', CultoDeleteView.as_view(), name='delete_culto'),
+    path('inscricoes/<int:pk>/', CultoInscricoesView.as_view(), name='inscricoes_culto'),
 ]

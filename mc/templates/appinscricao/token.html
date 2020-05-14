@@ -1,16 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!-- Extends -->
+{% extends '../base/base_layout.html' %}
 
-<h1>Seu token eh {{ token }}</h1>
+<!-- Static -->
+{% load static %}
 
-<h2>Anote esse token, para caso necessario poder cancelar sua inscricao</h2>
+<!-- Title -->
+{% block title %}
+    <title>Inscricao</title>
+{% endblock %}
+{% block style %}
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/login/main.css' %}"
+    />
+{% endblock %}
 
-<a href="{% url 'apphome:home' %}">Retornar ao menu principal</a>
+<!-- Content -->
+{% block content %}
+    <div class="container">
+        <div class="center">
+            <h1 class="text">Seu token é {{ token }}</h1>
 
-</body>
-</html>
+            <h2 class="ui red">Anote esse token, para caso
+                necessário poder cancelar sua inscrição</h2>
+
+            <a href="{% url 'apphome:home' %}">
+                <button class="ui primary basic button">Retornar ao menu principal</button>
+            </a>
+
+        </div>
+    </div>
+
+
+{% endblock %}
